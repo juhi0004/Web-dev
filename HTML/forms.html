@@ -32,10 +32,37 @@
         <input type="time"><br>
         Color
         <input type="color">
-        Submit
+        
+        <input type="checkbox" name="age" id="age" checked>
+        <label for="age"> I am 18+ </label></label>
+        <br>
+        <div>
+            <input type="radio" name="fruit" id="apple" />
+            <label for="apple">apple</label>
+            <input type="radio" name="fruit" id="mango" />
+            <label for="mango">mango</label>
+            <input type="radio" name="fruit" id="melon" />
+            <label for="melon">melon</label>
+        </div>
+        <br>
+        <div>
+            Choose your profession
+            <select name="profession" id="profession">
+                <option value="stu" selected>Student</option>
+                <option value="dev">Developer</option>
+            </select>
+        </div>
+        <div>
+           <label for="vol"> Select your volume</label> 
+           <input type="range" id="vol" min="10" max="100" name="vol"step="10">
+           
+        </div>
+        <label for="feedback"> Please give your feedback</label>
+        <textarea id="feedback" name="feedback" rows="2" cols="10"></textarea>
+        <div>
         <input type="button">
         <button>Submit</button>
-
+        </div>
     </form>
 </body>
 </html>
