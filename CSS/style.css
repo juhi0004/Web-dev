@@ -1,4 +1,14 @@
-h1{
-            color:blue;
-            background-color: rgb(255, 196, 248);
+h2{
+            color:orange;
+            
         }
+
+button{
+    background-color: blue;
+    color:white;
+}
+
+p{
+    background-color:black;
+    color:white;
+}
