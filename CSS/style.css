@@ -1,14 +1,62 @@
-h2{
-            color:orange;
+*{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+h1,h3{
+            color:#eb0b19;
             
         }
 
-button{
-    background-color: blue;
+#login{
+    background-color: white;
+}
+
+#signup{
+    background-color: #eb0b19;
     color:white;
 }
 
-p{
-    background-color:black;
+.up{
+    background-color: pink;
+}
+p a{
+    
+    color:rgb(119, 1, 1);
+}
+
+nav ul{
+    color:pink;
+}
+
+p+h3{
+    text-decoration:underline;
+}
+
+div>input{
+    background-color: darkgrey;
+}
+
+input[type="text"]{
+    color:blueviolet;
+}
+
+input[type="password"]{
+    color:yellowgreen;
+}
+
+button:hover{
+    background-color: black;
     color:white;
+}
+
+h3:hover{
+    text-decoration:none;
+}
+
+.post:nth-of-type(2){
+    background-color: rgb(93, 59, 17);
+}
+
+h3::first-letter{
+    color:blue;
 }
