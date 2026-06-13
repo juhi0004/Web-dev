@@ -1,0 +1,45 @@
+section{
+    margin-top:100px;
+}
+
+div{
+    width: 200px;
+    height:50px;
+    text-align: center;
+    background-color: #7aa874;
+    border: 2px solid black;
+    margin:10px;
+}
+
+div:nth-of-type(2n){
+    background-color: #f7db6a;
+}
+
+div:nth-of-type(3n){
+    background-color: #ebb02d;
+}
+
+#one{
+    transform:scale(0.5);
+}
+
+#two{
+    transform:translate(100px,500px);
+}
+
+#three{
+    transform: skew(20deg);
+}
+
+#four{
+    box-shadow: 4px 4px 10px black;
+}
+
+#five{
+   width:400px;
+   height:200px;
+   background-color: black;
+   margin:10px auto;
+   background-image:url("burst.jpg");
+   background-size:cover;
+}
