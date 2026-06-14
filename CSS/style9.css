@@ -1,0 +1,37 @@
+/*Qs1.Adda2stransitiononbox1forwidthchanges.Itshouldhave'ease-in'speedcurve&0.5sdelay*/
+#box1{
+    width:100px;
+    height:100px;
+    background:green;
+    transition:2s;
+
+}
+#box1:hover{
+    width:600px;
+    transition:5s;
+}
+/*Qs2.Usingtransform,movebox2200pxtotheright&200pxdown.Alsorotateit90deg.*/
+#box2{
+    width:100px;
+    height:100px;
+    background:red;
+}
+/*Qs3.Usingtransform,skewbox320degalongthexaxis.*/
+#box3{
+    width:100px;
+    height:100px;
+    background:lightblue;
+}
+
+/*Qs4.Seta2pxhorizontal&2pxvertical,greenshadowforbox4,witha5pxblurradius.*/
+#box4{
+    width:100px;
+    height:100px;
+    background:lightgreen;
+}
+/*Qs5.SetYourpictureoranypictureasthebackgroundofthediv"myPic".Also,settransparencyofthisdivto50%.*/
+#myPic{
+    width:200px;
+    height:200px;
+    background:pink;
+}
