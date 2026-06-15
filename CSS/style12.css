@@ -1,0 +1,28 @@
+.box{
+    height:100px;
+    width:300px;
+    background-color: pink;
+    animation-name:colorAnimation;
+    animation-duration:2s;
+    animation-timing-function: ease-in;
+    animation-delay:0;
+    animation-iteration-count: 2;
+    animation-direction:normal;
+}
+
+@keyframes fontAnimation{
+    from{font-size:20px;}
+    to{font-size:40px;}
+}
+
+@keyframes colorAnimation{
+    from{background-color: pink;}
+    to{background-color:aqua}
+
+}
+
+@media(width:700px){
+    .box{
+        background-color: rgb(22, 8, 86);
+    }
+}

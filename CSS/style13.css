@@ -1,0 +1,16 @@
+h1{
+    background-color: blueviolet;
+    border: 2px solid black;
+}
+
+@media(width:400px){
+    h1{
+        background-color: aquamarine;
+        color:black;
+    }
+    div{
+        height:100px;
+        width:50px;
+        background-color: brown;
+    }
+}
