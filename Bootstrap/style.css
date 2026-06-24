@@ -1,3 +1,11 @@
 .container{
     background-color: pink;
 }
+
+.navbar-nav{
+    flex-direction: row !important;
+}
+
+.nav-link{
+    padding: 0 10px;
+}
