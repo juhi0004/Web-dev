@@ -27,6 +27,7 @@ body{
     flex:1;
     border-radius: 1rem;
     overflow:auto;
+    padding:0 1.5rem 0 1.5rem;
 }
 
 .music-player{
@@ -94,12 +95,12 @@ a{
     display:flex;
 }
 
-icons i{
+.icons i{
     opacity: 0.7;
     margin-right:1rem;
 }
 
-icons i:hover{
+.icons i:hover{
     opacity:1;
 }
 
@@ -140,4 +141,168 @@ icons i:hover{
     display:flex;
     justify-content: space-between;
     align-items: center;
+    padding:1rem 0rem;
+    z-index: 10;
+}
+
+.sticky-nav-icons{
+    margin:0.75rem;
+}
+
+.sticky-nav-options{
+    display:flex;
+    justify-content: center;
+    align-items:center; 
+}
+
+.nav-item{
+    margin-right:1.5rem;
+}
+
+.dark{
+    background:#000;
+    color:white;
+}
+
+@media(max-width:1000px){
+    .hide{
+        display:none;
+    }
+}
+
+.card{
+    background-color:#232323;
+    width:160px;
+    border-radius:0.5rem;
+    padding:1rem;
+    margin-left:1.5rem;
+}
+
+.cards-container{
+    display:flex;
+    flex-wrap:wrap;
+}
+
+.card-img{
+    width:100%;
+    border-radius:0.5rem;
+}
+
+.card-title{
+    font-weight:600;
+    justify-content: center;
+}
+
+.card-info{
+    font-size:0.75rem;
+    opacity:0.8;
+}
+
+.footer{
+    height:300px;
+    display:flex;
+    align-items: center;
+    justify-content:center ;
+}
+
+.line{
+    width:90%;
+    height:50%;
+    border-top:1px solid white;
+    opacity:0.4;
+
+
+}
+
+.music-player{
+     background-color:black;
+    position:fixed;
+    bottom:0;
+    width:100%;
+    height:72px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 1rem;
+
+
+}
+
+.music-player i{
+    opacity:0.7;
+    padding:0.25rem;
+}
+.music-player i:hover{
+    opacity: 1;
+}
+.album{
+    height:56px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    flex:1;
+}
+    
+.album img{
+    height:56px;
+    width:56px;
+    padding:0.25rem;
+    margin-top:0.3rem;
+}
+
+.album-info{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    flex:1;    
+}
+
+.title{
+    margin:0;
+    font-size:14px;
+    font-weight:600;
+}
+
+.artist{
+    margin:2px 0 0;
+    font-size:12px;
+    color:gray;
+}
+
+.album i{
+    font-size:20px;
+    opacity:0.6;
+}
+
+.album i:hover{
+    opacity:1;
+    font-size:22px;
+}
+
+.volume-control{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.volume-slider{
+    width: 100px;
+    cursor: pointer;
+    padding-right: 1rem;
+}
+.player{
+    width:50%;
+    flex:2;
+}
+.controls{
+    width:25%;
+    display:flex;
+    justify-content:flex-end;
+    align-items: center;
+    gap:0.5rem;
+    flex:1;
+    padding-right:1rem;
+    margin-right: 1rem;
+   
 }
