@@ -1,0 +1,10 @@
+console.log("hello world");
+console.log("hello bhawana");
+let a=5;
+let b=3;
+console.log("sum is: ",a+b);
+let pencilPrice=10;
+let erasorPrice=5;
+// let output="the total price is: "+ (pencilPrice+erasorPrice)+" Rupees";
+let output=`the total price is : ${a+b} Rupees`;
+console.log(output);
