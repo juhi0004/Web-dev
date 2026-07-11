@@ -45,3 +45,5 @@ let btn=document.querySelector("button");
 btn.addEventListener("click", function(){
     console.log("generate a random color");
 });
+
+
