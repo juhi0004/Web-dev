@@ -3,6 +3,8 @@ const app=express();
 const path=require("path");
 const port=3000;
 
+
+app.use(express.static(path.join(__dirname,"public")));
 app.set("view engine","ejs");
 app.set("views",path.join(__dirname,"/views"));
 app.get("/",(req,res)=>{
@@ -28,3 +30,5 @@ app.get("/ig/:username",(req,res)=>{
     // console.log(username);
     res.render("instagram.ejs",{data});
 });
+
+//app.set("view engine")
