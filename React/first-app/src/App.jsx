@@ -1,6 +1,7 @@
-import "./App.css"
-import Title from "./Title.jsx"
-
+// import "./App.css"
+import Title from "./Title.jsx";
+import Button from "./Button";
+import Form from"./Form.jsx";
 function Description(){
   return <h1>I am a description component</h1>;
 }
@@ -10,11 +11,12 @@ function App() {
     <div>
       <h1>this is my div component</h1>
       <Title/>
-      <p>2*2 ={2*2}</p>
+      <Button />
       <Description/>
+      <Form/>
     </div>
   );
     
 }
 
-export default App
+export default App; 
