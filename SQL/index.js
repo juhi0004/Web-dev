@@ -1,34 +1,62 @@
 const { faker } = require('@faker-js/faker');
 const mysql = require('mysql2');
+const express = require("express");
+
+const app = express();
+const path=require("path");
+
+app.set("view engine","ejs");
+app.set("views",path.join(__dirname,"/views"));
 
 const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  database: 'delta_app',
-  password:'root'
+    host: 'localhost',
+    user: 'root',
+    database: 'delta_app',
+    password: 'root'
 });
 
-try{
-    connection.query("SHOW TABLES",(err,result)=>{
-    if(err) throw err;
-    console.log(result);
-});
-}catch(err){
-    console.log(err);
+let getRandomUser = () => {
+    return [
+        faker.string.uuid(),
+        faker.internet.username(),
+        faker.internet.email(),
+        faker.internet.password()
+    ];
+};
+
+let data = [];
+
+for (let i = 1; i <= 100; i++) {
+    data.push(getRandomUser());
 }
 
-connection.end();
+let q = "INSERT INTO user(id, username, email, password) VALUES ?";
 
-// let createRandomUser = () => {
-//   return {
-//     userId: faker.string.uuid(),
-//     username: faker.internet.username(),
-//     email: faker.internet.email(),
-    
-//     password: faker.internet.password(),
-    
-//   };
-// }
+connection.query(q, [data], (err, result) => {
+    if (err) {
+        console.log(err);
+        return;
+    }
 
-//console.log(createRandomUser());
+    console.log("100 users inserted");
+});
+app.listen(8080, () => {
+    console.log("server is listening to port 8080");
+});
+
+app.get("/", (req, res) => {
+    let q = `SELECT COUNT(*) AS count FROM user`;
+
+    connection.query(q, (err, result) => {
+        if (err) {
+            let count= result[0]["count(*)"];
+            console.log(err);
+            return res.render("home.ejs",{count});
+        }
+
+        res.send(result);
+    });
+});
+
+
 
