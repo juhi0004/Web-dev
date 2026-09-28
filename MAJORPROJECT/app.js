@@ -3,6 +3,8 @@ const app=express();
 const mongoose= require("mongoose");
 const Listing= require("./models/listing.js");
 const path=require("path");
+const methodOverride=require("method-override");
+const ejsMate=require("ejs-mate");
 
 app.use(express.urlencoded({ extended: true }));
 
@@ -18,6 +20,9 @@ async function main(){
 app.set("view engine","ejs");
 app.set("views",path.join(__dirname,"views"));
 //app.use(express.urlencoded({extended:true}));
+app.use(methodOverride("_method"));
+app.engine('ejs',ejsMate);
+app.use(express.static(path.join(__dirname,"/public")));
 
 app.get("/",(req,res)=>{
     res.send("I am root");
@@ -52,9 +57,11 @@ app.post("/listings",async(req,res)=>{
     //console.log(listing);
     })
 //edit route
-app.get("/listings/:id/edit",(req,res)=>{
-
-})
+app.get("/listings/:id/edit",async(req,res)=>{
+    let {id}= req.params;
+    const listing= await Listing.findById(id);
+    res.render("listings/edit.ejs",{listing});
+});
 
 // app.get("/testlisting",async(req,res)=>{
 //     let sampleListing= new Listing({
@@ -68,6 +75,22 @@ app.get("/listings/:id/edit",(req,res)=>{
 //     console.log("sample was saved");
 //     res.send("successful testing");
 // });
+
+app.put("/listings/:id",async(req,res)=>{
+    let {id}= req.params;
+    await Listing.findByIdAndUpdate(id,{...req.body.listing});
+    res.redirect(`/listings/${id}`);
+});
+
+
+//delete route
+app.delete("/listings/:id",async(req,res)=>{
+    let {id} =req.params;
+    console.log(id);
+    let deletedListing= await Listing.findByIdAndDelete(id);
+    console.log(deletedListing);
+    res.redirect("/listings");
+});
 
 app.listen(8080,()=>{
     console.log("server is listening");
