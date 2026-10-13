@@ -5,9 +5,11 @@ const Listing= require("./models/listing.js");
 const path=require("path");
 const methodOverride=require("method-override");
 const ejsMate=require("ejs-mate");
-const wrapAsync=require("./utils/wrapAsync.js");
 const ExpressError=require("./utils/ExpressError.js");
-const {listingSchema}=require("./schema.js");
+
+
+const listings=require("./routes/listing.js");
+const reviews=require("./routes/review.js");
 
 app.use(express.urlencoded({ extended: true }));
 
@@ -31,39 +33,39 @@ app.get("/",(req,res)=>{
     res.send("I am root");
 })
 
-const validateListing =(req,res,next)=>{
-    let {error}=listingSchema.validate(req.body);
-    console.log(result);
-    if(error){
-        let errMsg=error.details.map((el)=>
-            el.message).join(",");
-         throw new ExpressError(404,errMsg);
-        }
+// const validateListing =(req,res,next)=>{
+//     let {error}=listingSchema.validate(req.body);
+//     console.log(result);
+//     if(error){
+//         let errMsg=error.details.map((el)=>
+//             el.message).join(",");
+//          throw new ExpressError(404,errMsg);
+//         }
        
-    else{
-        next();
-    }
-};
+//     else{
+//         next();
+//     }
+// };
 
-//index route
-app.get("/listings",wrapAsync(async(req,res)=>{
-    const allListings=await Listing.find({});
-    res.render("listings/index.ejs",{allListings});
-    }));
+// const validateReview =(req,res,next)=>{
+//     let {error}=reviewSchema.validate(req.body);
+//     console.log(result);
+//     if(error){
+//         let errMsg=error.details.map((el)=>
+//             el.message).join(",");
+//          throw new ExpressError(404,errMsg);
+//         }
+       
+//     else{
+//         next();
+//     }
+// };
 
-//new route
-app.get("/listings/new",(req,res)=>{
-    res.render("listings/new.ejs");
-});
 
-//show route
-app.get("/listings/:id", wrapAsync(async(req,res)=>{
-    let {id}= req.params;
-    const listing= await Listing.findById(id);
-    res.render("listings/show.ejs",{listing});
 
-}));
 
+app.use("/listings",listings);
+app.use("/listings/:id/reviews",reviews);
 //create route 
 // app.post("/listings",async(req,res)=>{
 //     //let {title,description,image,price,country,location}=req.body;
@@ -74,33 +76,7 @@ app.get("/listings/:id", wrapAsync(async(req,res)=>{
 //     //console.log(listing);
 //     })
 
-app.post("/listings",validateListing, wrapAsync(async (req, res) => {
-    
-    
-    const newListing = new Listing(req.body.listing);
-    // if(!newListing.description){
-    //     throw new ExpressError(400,"Description is missing");
-    // }
-    // if(!newListing.title){
-    //     throw new ExpressError(400,"Title is missing");
-    // }
-    // if(!newListing.location){
-    //     throw new ExpressError(400,"Location is missing");
-    // }
-    // if(!newListing.price){
-    //     throw new ExpressError(400,"Price is missing");
-    // }
-    await newListing.save();
-    res.redirect("/listings");
-       
-}));
 
-//edit route
-app.get("/listings/:id/edit",validateListing,wrapAsync(async(req,res)=>{
-    let {id}= req.params;
-    const listing= await Listing.findById(id);
-    res.render("listings/edit.ejs",{listing});
-}));
 
 // app.get("/testlisting",async(req,res)=>{
 //     let sampleListing= new Listing({
@@ -116,21 +92,9 @@ app.get("/listings/:id/edit",validateListing,wrapAsync(async(req,res)=>{
 // });
 
 
-app.put("/listings/:id",validateListing,wrapAsync(async(req,res)=>{
-    let {id}= req.params;
-    await Listing.findByIdAndUpdate(id,{...req.body.listing});
-    res.redirect(`/listings/${id}`);
-}));
 
 
-//delete route
-app.delete("/listings/:id",wrapAsync(async(req,res)=>{
-    let {id} =req.params;
-    console.log(id);
-    let deletedListing= await Listing.findByIdAndDelete(id);
-    console.log(deletedListing);
-    res.redirect("/listings");
-}));
+
 
 app.all("/*splat",(req,res,next)=>{
     next(new ExpressError(404,"page not found"));
